@@ -1,0 +1,54 @@
+ion-toolbar {
+  --background: #f5f9ff;
+  --padding-end: 3%;
+}
+circle-progress {
+  padding: 5%;
+}
+
+.information-div {
+  color: #363636;
+}
+
+.title-div {
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
+.toolbar-footer {
+  --padding-start: 5%;
+  --padding-end: 5%;
+  --padding-top: 5%;
+  --padding-bottom: 5%;
+}
+
+.btn-back {
+  text-transform: none;
+  --background: #e1ebfa;
+  --color: #2e7ae6;
+}
+
+.btn-next {
+  text-transform: none;
+  --background: #2e7ae6;
+  --color: #f5f9fd;
+}
+
+ion-content {
+  --background: #dfe1e6;
+  --padding-start: 8%;
+}
+.content-form {
+  width: 90%;
+}
+
+ion-item {
+  border: none; /* <-- This thing here */
+  border: solid 0px #ccc;
+  border-radius: 10px;
+  margin-top: 5%;
+}
+
+._require {
+  color: #eb445a;
+}

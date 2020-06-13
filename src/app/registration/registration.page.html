@@ -1,0 +1,138 @@
+<ion-header>
+  <ion-toolbar>
+    <circle-progress [percent]="porcent" [animationDuration]="300" [title]="idForm+1 + ' of ' + numForms"
+      [animation]="true">
+    </circle-progress>
+    <div class="information-div" slot="end">
+      <div class="title-div">{{titleForm}}</div>
+      <div class="subtitle-div">Next: {{nextTitleForm}}</div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- personal information form -->
+  <div *ngIf="showFormPersoInfor" class="content-form" [formGroup]="personalInformation">
+    <div (ngSubmit)="submit()">
+      <ion-item>
+        <ion-label position="floating">Full Name <span class="_require">*</span></ion-label>
+        <ion-input type="text" formControlName="fullName"></ion-input>
+      </ion-item>
+      <div *ngFor="let error of errorMessages.fullName">
+        <ng-container *ngIf="fullName.hasError(error.type) && (fullName.dirty || fullName.touched)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label position="floating">Identification Card <span class="_require">*</span></ion-label>
+        <ion-input type="text" formControlName="idCard"></ion-input>
+      </ion-item>
+      <div *ngFor="let error of errorMessages.idCard">
+        <ng-container *ngIf="idCard.hasError(error.type) && (idCard.dirty || idCard.touched)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label position="floating">Birthdate</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DD" formControlName="birthdate"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Ocupation</ion-label>
+        <ion-input inputmode="text" formControlName="ocupation"></ion-input>
+      </ion-item>
+      <div *ngFor="let error of errorMessages.ocupation">
+        <ng-container *ngIf="ocupation.hasError(error.type) && (ocupation.dirty || ocupation.touched)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label position="floating">Gender</ion-label>
+        <ion-select formControlName="gender" placeholder="Select One">
+          <ion-select-option value="female">Female</ion-select-option>
+          <ion-select-option value="male">Male</ion-select-option>
+          <ion-select-option value="other">Other</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+  </div>
+
+  <!-- contact information form -->
+  <div *ngIf="showFormContacInfo" class="content-form" [formGroup]="contactInformation">
+    <ion-item>
+      <ion-label position="floating">Phone Number <span class="_require">*</span></ion-label>
+      <ion-input type="tel" formControlName="phoneNumber"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.phoneNumber">
+      <ng-container *ngIf="phoneNumber.hasError(error.type) && (phoneNumber.dirty || phoneNumber.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label position="floating">Alternative Cell Number</ion-label>
+      <ion-input type="tel" formControlName="alterPhoneNumber"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.alterPhoneNumber">
+      <ng-container
+        *ngIf="alterPhoneNumber.hasError(error.type) && (alterPhoneNumber.dirty || alterPhoneNumber.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label position="floating">Email <span class="_require">*</span></ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.email">
+      <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label position="floating">Confirm e-mail</ion-label>
+      <ion-input type="email" formControlName="confirmEmail"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.confirmEmail">
+      <ng-container *ngIf="confirmEmail.hasError(error.type) && (confirmEmail.dirty || confirmEmail.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+  </div>
+
+  <!-- credentials information form -->
+  <div *ngIf="showFormCredentials" class="content-form" [formGroup]="credentialsInformation">
+    <ion-item>
+      <ion-label position="floating">Nickname <span class="_require">*</span></ion-label>
+      <ion-input formControlName="nickname"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.nickname">
+      <ng-container *ngIf="nickname.hasError(error.type) && (nickname.dirty || nickname.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label position="floating">Password <span class="_require">*</span></ion-label>
+      <ion-input formControlName="password"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.password">
+      <ng-container *ngIf="password.hasError(error.type) && (password.dirty || password.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label position="floating">Confirm Password <span class="_require">*</span></ion-label>
+      <ion-input formControlName="confirmPassword"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.confirmPassword">
+      <ng-container *ngIf="confirmPassword.hasError(error.type) && (confirmPassword.dirty || confirmPassword.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+  </div>
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar class="toolbar-footer">
+    <ion-button class="btn-back" (click)="previousForm()" slot="start" size="large">Back</ion-button>
+    <ion-button class="btn-next" (click)="nextForm()" slot="end" size="large">Next</ion-button>
+  </ion-toolbar>
+</ion-footer>
